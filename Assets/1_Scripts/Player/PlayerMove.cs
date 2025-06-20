@@ -79,7 +79,6 @@ public class PlayerMove : MonoBehaviour
             Player_Anim.SetInteger("onSky", 0);
         }
 
-
         // АјАн
         if (Input.GetKeyDown(KeyCode.X) && canAttack)
         {

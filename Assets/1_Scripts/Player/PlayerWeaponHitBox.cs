@@ -1,26 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class attackEffectManager
-{
-    [Header("이펙트 파티클시스템 프리팹")]
-    public GameObject[] Effect_Prefabs;
-    
-}
 public class PlayerWeaponHitBox : MonoBehaviour
 {
     [Header("타격 이펙트 파티클시스템 프리팹")]
     public GameObject[] Attack_Effect;
-    
+
     public static PlayerWeaponHitBox Instance { get; private set; }
     [HideInInspector]public bool entered;
 
-    AudioSource audioSource;
     int Index; // 무기에 따라 이펙트 변경을 위한 인덱스 변수
     private void Awake()
     {
         Instance = this;
-        audioSource = GetComponent<AudioSource>();
         //Index = 무기에 따라 이펙트 변경. 인덱스를 배열과 사운드에 넣음 
     }
     private void Update()
@@ -32,7 +24,7 @@ public class PlayerWeaponHitBox : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")&&entered)  // OnTriggerEnter이 감지되지 않는 공중에서 HitBox가 열리면 닫히지 않는 문제 해결
+        if (collision.CompareTag("Enemy")&& entered)  // OnTriggerEnter이 감지되지 않는 공중에서 HitBox가 열리면 닫히지 않는 문제 해결
         {
             var Obj = Instantiate(Attack_Effect[0], transform.position, Quaternion.identity); // 타격 이펙트 배열 확장 변경
             WeaponSet.Instance.AttackSF_Play(0);

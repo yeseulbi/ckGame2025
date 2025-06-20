@@ -7,15 +7,16 @@ TagManager:
   - Floor
   - FxTemporaire
   - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Effects
+  - Player
   - Water
   - UI
-  - 
-  - 
+  - Wall
+  - Floor
   - 
   - 
   - 

@@ -15,13 +15,13 @@ MonoBehaviour:
   enemyName: melee_1
   enemyType: 0
   maxHP: 0
-  moveSpeed: 0
+  moveSpeed: 4
   attackPower: 0
   canNormalAttack: 1
-  detectionRange: 0
-  attackRange: 0
+  detectionRange: 4
+  attackRange: 1
   attackCooltime: 0
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 3125916074132796749, guid: 9e6f16cc197ab7b4f9dbdb5194fc433f, type: 3}
   canUseSkill: 0
   skills: []
   buffs: 
