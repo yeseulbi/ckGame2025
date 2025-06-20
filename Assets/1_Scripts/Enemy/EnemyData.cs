@@ -27,7 +27,8 @@ public class EnemyData : ScriptableObject
     [Header("저항 / 약점"), Tooltip("영구 버프, 디버프")]
     public Buff[] buffs;
     public Debuff[] debuffs;
-
+    
+    [Header("보스")]
     public bool isBoss;
 }
 

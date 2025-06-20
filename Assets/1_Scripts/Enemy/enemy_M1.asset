@@ -12,14 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e073f94ac29a648a4297887d241328, type: 3}
   m_Name: enemy_M1
   m_EditorClassIdentifier: 
-  enemyName: 
+  enemyName: melee_1
   enemyType: 0
   maxHP: 0
   moveSpeed: 0
   attackPower: 0
+  canNormalAttack: 1
   detectionRange: 0
   attackRange: 0
-  attackCooldown: 0
+  attackCooltime: 0
   enemyPrefab: {fileID: 0}
+  canUseSkill: 0
   skills: []
+  buffs: 
+  debuffs: 
   isBoss: 0
