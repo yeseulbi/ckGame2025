@@ -22,11 +22,11 @@ public class PlayerMove : MonoBehaviour
     bool canAttack = true;
 
     Vector3 lookDirection = Vector2.right; // 바라보는 방향을 Vector2로 저장
-    Animator Player_Anim, Weapon_Anim;
-    Rigidbody2D rb;
-    AudioSource audioSource;
+    protected Animator Player_Anim, Weapon_Anim;
+    protected Rigidbody2D rb;
+    protected AudioSource audioSource;
 
-    private void Awake()
+    public virtual void Awake()
     {
         Player_Anim = transform.GetChild(0).GetComponent<Animator>();
         Weapon_Anim = transform.GetChild(1).GetComponent<Animator>();
@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    void Update()
+    public virtual void Update()
     {
         var horizontal = Input.GetAxisRaw("Horizontal");
         Player_Anim.speed = (1+speed/100f);
@@ -82,7 +82,7 @@ public class PlayerMove : MonoBehaviour
         // 공격
         if (Input.GetKeyDown(KeyCode.X) && canAttack)
         {
-            // 공격 HitBox 활성화
+            // 공격 Hitbox 활성화
             Weapon_HitBox.SetActive(true);
             PlayerWeaponHitBox.Instance.entered = true; // 코루틴 활성화
             Weapon_Anim.SetTrigger("Attack_1");
@@ -138,7 +138,7 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator AttackDelay(float AttackSpeed)  // 추가 어택 속도, 없으면 0
     {
-        var Delay = PlayerState.Instance.attackDelay;
+        var Delay = PlayerStatus.Instance.attackDelay;
         yield return new WaitForSeconds(Delay - AttackSpeed / 100f * Delay);
         canAttack = true;
     }

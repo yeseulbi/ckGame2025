@@ -26,18 +26,22 @@ public class PlayerWeaponHitBox : MonoBehaviour
     {
         if (collision.CompareTag("Enemy")&& entered)  // OnTriggerEnter이 감지되지 않는 공중에서 HitBox가 열리면 닫히지 않는 문제 해결
         {
+            EnemyStatus enemy = collision.GetComponent<EnemyStatus>();  // 맞은 적의 스탭 관리cs
+            GameObject player = transform.parent.gameObject; // 플레이어 오브젝트 가져오기
+
             var Obj = Instantiate(Attack_Effect[0], transform.position, Quaternion.identity); // 타격 이펙트 배열 확장 변경
             WeaponSet.Instance.AttackSF_Play(0);
 
-            GameObject player = transform.parent.gameObject; // 플레이어 오브젝트 가져오기
-            collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - player.transform.position).normalized *2.5f , ForceMode2D.Impulse);
-            /*적에게 힘을 주는 부분, 밀어내는 힘이 있다면 무기별로 다를 것 같다. 2.5f부분 수정*/
+
+            enemy.TakeDamage();
+            enemy.GetComponent<Rigidbody2D>().AddForce((enemy.transform.position - player.transform.position).normalized *2f , ForceMode2D.Impulse);
+            /*적에게 힘을 주는 부분, 밀어내는 힘이 있다면 무기별로 다를 것 같다. 2f부분 수정*/
             var particle = Obj.GetComponent<ParticleSystem>();
             float RemoveTime = particle.main.duration + particle.main.startLifetime.constantMax;    // 파티클 시스템의 지속 시간과 + 시작 LifeTime 제거 시간 계산
 
             Destroy(Obj, RemoveTime);
         }
-        gameObject.SetActive(false); // HitBox 비활성화
+        gameObject.SetActive(false); // Hitbox 비활성화
     }
     //데미지 추가, PlayerStat.cs에서 스탯 가져오기
 
@@ -45,6 +49,6 @@ public class PlayerWeaponHitBox : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         entered = false; // 0.1초 후에 entered를 false로 설정
-        gameObject.SetActive(false); // HitBox 비활성화
+        gameObject.SetActive(false); // Hitbox 비활성화
     }
 }

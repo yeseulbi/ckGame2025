@@ -10,15 +10,16 @@ public class EnemyData : ScriptableObject
     [Header("능력치")]
     public float maxHP;
     public float moveSpeed;
-    public float attackPower;
+    public float str;
 
     [Header("일반 공격 스탯")]
     public bool canNormalAttack; // 일반 공격 사용 여부
     public float detectionRange;  // 발각 범위
-    public float attackRange;
     public float attackCooltime;
 
-    public GameObject enemyPrefab;
+    [Header("일반 공격 이펙트 / 효과")]
+    public GameObject AttackFX;
+    public AudioClip AttackSound;
 
     [Header("스킬")]
     public bool canUseSkill;    // 스킬 사용 여부
