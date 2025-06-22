@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: melee_1
   enemyType: 0
-  maxHP: 100
+  maxHP: 150
   moveSpeed: 4
   str: 5
   canNormalAttack: 1
   detectionRange: 4
   attackCooltime: 1
-  AttackFX: {fileID: 9001803455582960341, guid: 40b7860880f55e84991b1d0b17940f11, type: 3}
+  AttackFX: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2, type: 3}
   AttackSound: {fileID: 8300000, guid: 3dc7d265f9c42437492a59228fc7b6d7, type: 3}
   canUseSkill: 0
   skills: []

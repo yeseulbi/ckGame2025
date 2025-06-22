@@ -219,9 +219,8 @@ public class EnemyMove : MonoBehaviour
     IEnumerator DeadMotion()
     {
         anim.SetBool("isDead", true);
-        yield return new WaitUntil(() =>
-        anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f &&
-        anim.GetCurrentAnimatorStateInfo(0).IsName("Dead"));
+        yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).IsName("Dead"));
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         Destroy(gameObject);
     }
 }

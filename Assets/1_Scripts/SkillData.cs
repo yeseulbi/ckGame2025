@@ -1,6 +1,27 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewSkillData", menuName = "Game/Skill Data")]
+[System.Serializable]
+public class StatusEffectData
+{
+    public StatusEffect effect;  // ex) Burn, Frozen 등
+    public float duration;       // ex) 5초, 3초 등
+}
+[System.Serializable]
+public class BuffData
+{
+    public Buff buff;            // ex) 공격력 증가
+    public float value;          // ex) +20% 등
+    public float duration;       // ex) 5초
+}
+
+[System.Serializable]
+public class DebuffData
+{
+    public Debuff debuff;
+    public float value;
+    public float duration;
+}
 public class SkillData : ScriptableObject
 {
     [Header("스킬명 / 종류")]
@@ -21,7 +42,7 @@ public class SkillData : ScriptableObject
     public float effectRadius;
 
     [Header("상태 이상 / 버프 / 디버프"), Tooltip("맞는 상대에게 부여하는 효과")]
-    public StatusEffect statusEffect;
+    public StatusEffect[] statusEffects;
     public Buff[] buffs;
     public Debuff[] debuffs;
 

@@ -22,13 +22,17 @@ public class PlayerMove : MonoBehaviour
     bool canAttack = true;
 
     Vector3 lookDirection = Vector2.right; // 바라보는 방향을 Vector2로 저장
+    protected GameObject sprite;
+    protected SpriteRenderer spRenderer;
     protected Animator Player_Anim, Weapon_Anim;
     protected Rigidbody2D rb;
     protected AudioSource audioSource;
 
     public virtual void Awake()
     {
-        Player_Anim = transform.GetChild(0).GetComponent<Animator>();
+        sprite = transform.GetChild(0).gameObject;
+        spRenderer = sprite.GetComponent<SpriteRenderer>();
+        Player_Anim = sprite.GetComponent<Animator>();
         Weapon_Anim = transform.GetChild(1).GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();

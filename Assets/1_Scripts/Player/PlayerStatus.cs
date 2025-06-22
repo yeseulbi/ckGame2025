@@ -1,6 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-
+public enum CharacterType
+{
+    Android,
+    Human
+}
 public class PlayerStatus : PlayerMove
 {
     // level, hp, str, EP, exp, speed, AttackSpeed
@@ -21,6 +26,24 @@ public class PlayerStatus : PlayerMove
 
     [Tooltip("현재 경험치")] public float currentExp = 0;
     [Tooltip("다음 레벨까지 경험치")] public float nextLevelExp = 100f;
+
+    public static bool DontGetDamage;   //무적
+    float invincibleTime = 0.8f;        //무적시간(공격 받았을 때)
+    public CharacterType characterType;
+    public SkillData ultimateSkill;
+
+    void Start()
+    {
+        switch (characterType)
+        {
+            case CharacterType.Android:
+                //ultimateSkill = AndroidSkill;
+                break;
+            case CharacterType.Human:
+                // ultimateSkill = HumanSkill;
+                break;
+        }
+    }
 
     public override void Awake()
     {
@@ -57,10 +80,20 @@ public class PlayerStatus : PlayerMove
         HP.text = currentHp.ToString();
     }
 
-    public void TakeDamage(float str)
+    public IEnumerator TakeDamage(float str)    //데미지를 받은 후 0.8초 무적, 무적 시간엔 함수 무시
     {
-        currentHp -= str;
-        Player_Anim.SetTrigger("isHurt");
-        audioSource.PlayOneShot(Hurt);
+        if(!DontGetDamage)
+        {
+            DontGetDamage = true;
+            currentHp -= str;
+            Player_Anim.SetTrigger("isHurt");
+            audioSource.PlayOneShot(Hurt);
+
+            spRenderer.color = Color.red;
+
+            yield return new WaitForSeconds(invincibleTime);
+                DontGetDamage = false;
+            spRenderer.color = Color.white;
+        }
     }
 }

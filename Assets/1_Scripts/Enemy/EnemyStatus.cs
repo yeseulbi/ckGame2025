@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyStatus : EnemyMove
@@ -14,6 +13,14 @@ public class EnemyStatus : EnemyMove
     private Vector3 initialLocalScale;
 
     bool canAttack = true;
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")&&!PlayerStatus.DontGetDamage)
+        {
+            StartCoroutine(player.GetComponent<PlayerStatus>().TakeDamage(_Data.str));
+            Effect();
+        }
+    }
     public override void Awake()
     {
         base.Awake();
@@ -24,10 +31,7 @@ public class EnemyStatus : EnemyMove
 
         currentHpBar = Hpbar.transform.GetChild(0).gameObject;
         initialLocalScale = Hpbar.transform.localScale;
-    }
-
-    private void Start()
-    {
+        
         currentHp = _Data.maxHP;
         audioSource.clip = _Data.AttackSound;
     }
@@ -97,7 +101,7 @@ public class EnemyStatus : EnemyMove
 
         var particle = Obj.GetComponent<ParticleSystem>();
         float RemoveTime = particle.main.duration + particle.main.startLifetime.constantMax;    // 파티클 시스템의 지속 시간과 + 시작 LifeTime 제거 시간 계산
-        player.GetComponent<PlayerStatus>().TakeDamage(_Data.str);
+        StartCoroutine(player.GetComponent<PlayerStatus>().TakeDamage(_Data.str));
         Destroy(Obj, RemoveTime);
     }
 }
