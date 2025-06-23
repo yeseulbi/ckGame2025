@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+
 public class PlayerMove : MonoBehaviour
 {
     [Header("무기 공격 이펙트 프리팹")]
@@ -13,7 +14,6 @@ public class PlayerMove : MonoBehaviour
     [Header("점프 높이, 이동 속도")]
     public float force = 11;
     public float speed = 6f;
-
 
     public GameObject Weapon_HitBox;
 
@@ -143,7 +143,7 @@ public class PlayerMove : MonoBehaviour
     IEnumerator AttackDelay(float AttackSpeed)  // 추가 어택 속도, 없으면 0
     {
         var Delay = PlayerStatus.Instance.attackDelay;
-        yield return new WaitForSeconds(Delay - AttackSpeed / 100f * Delay);
+        yield return new WaitForSeconds(0.6f/(Delay + AttackSpeed*Delay/100));
         canAttack = true;
     }
 }

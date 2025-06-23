@@ -19,10 +19,10 @@ public class PlayerStatus : PlayerMove
     public int level = 1;
     public float maxHp = 100f;
     public float currentHp;
-    public float str = 25f;          // 공격력
+    public float str = 10f;          // 공격력
     public float EP = 100f;               // 스킬 포인트
     public float moveSpeed = 5f;          // 이동속도 (아이템 기반)
-    [Tooltip("공격 딜레이 속도")] public float attackDelay = 0.5f;        // 공격속도 (아이템 기반) -> 공격딜레이속도
+    [Tooltip("공격 딜레이 속도")] public float attackDelay = 1f;        // 공격속도 -> 무기공격딜레이속도/공속
 
     [Tooltip("현재 경험치")] public float currentExp = 0;
     [Tooltip("다음 레벨까지 경험치")] public float nextLevelExp = 100f;
@@ -60,7 +60,7 @@ public class PlayerStatus : PlayerMove
             maxHp += 20f;
             currentHp = maxHp;
             EP += 10;
-            str += 5f;
+            str += 10f;
             currentExp = 0;
             nextLevelExp *= 1.6f;
         }
@@ -96,4 +96,21 @@ public class PlayerStatus : PlayerMove
             spRenderer.color = Color.white;
         }
     }
+
+    /*public float CalculateFinalDamage()
+    {
+        // 1. 장착한 무기의 정보를 가져옵니다.
+        WeaponData equippedWeapon = inventory.GetEquippedWeapon();
+
+        // 2. 캐릭터의 스탯 보너스를 계산합니다. (str 1 = 1% 가정)
+        float statBonus = this.str * 0.01f;
+
+        // 3. 최종 데미지를 계산합니다.
+        float finalDamage = equippedWeapon.baseDamage * (1f + statBonus);
+
+        // (심화) 여기에 무기 자체의 %옵션, 크리티컬, 버프 등을 추가로 계산할 수 있습니다.
+        // finalDamage *= (1f + equippedWeapon.attackPowerIncrease.x * 0.01f);
+
+        return finalDamage;
+    }*/
 }

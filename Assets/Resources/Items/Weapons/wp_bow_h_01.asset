@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b4bee6e413a1d4e9b4a77cecbceebe, type: 3}
+  m_Name: wp_bow_h_01
+  m_EditorClassIdentifier: 
+  itemID: wp_bow_h_01
+  itemName: "\uD384\uC2A4 \uC2A4\uD2B8\uB9C1 \uBCF4\uC6B0"
+  itemType: 0
+  description: "\uC5D0\uB108\uC9C0 \uD65C\uC2DC\uC704\uAC00 \uAC15\uB825\uD55C \uD384\uC2A4\uB97C
+    \uBC29\uCD9C\uD55C\uB2E4."
+  itemIcon: {fileID: 2079459991, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+  rarity: 2
+  weaponType: 1
+  baseDamage: 30
+  baseAttackDelay: 1.2
+  attackPowerIncrease: {x: 20, y: 25}
+  skillDamageIncrease: {x: 30, y: 35}
+  uniqueStatIncrease: {x: 35, y: 45}
+  statusEffectChance: {x: 5, y: 10}
+  effects: []
+  cooldown: 0
+  skillToUnlock: 0

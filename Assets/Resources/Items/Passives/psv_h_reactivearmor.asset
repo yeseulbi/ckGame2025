@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b4bee6e413a1d4e9b4a77cecbceebe, type: 3}
+  m_Name: psv_h_reactivearmor
+  m_EditorClassIdentifier: 
+  itemID: psv_h_reactivearmor
+  itemName: "\uBC18\uC751\uD615 \uC7A5\uAC11 \uBAA8\uB4C8"
+  itemType: 1
+  description: "\uBC1B\uB294 \uD53C\uD574\uB97C \uAC10\uC18C\uC2DC\uD0A8\uB2E4."
+  itemIcon: {fileID: 0}
+  rarity: 2
+  weaponType: 0
+  baseDamage: 0
+  baseAttackDelay: 0
+  attackPowerIncrease: {x: 0, y: 0}
+  skillDamageIncrease: {x: 0, y: 0}
+  uniqueStatIncrease: {x: 0, y: 0}
+  statusEffectChance: {x: 0, y: 0}
+  effects:
+  - effectType: 0
+    target: 0
+    statToModify: 2
+    statusToApply: 0
+    value: 15
+    duration: 0
+    isPercentage: 1
+  cooldown: 0
+  skillToUnlock: 0

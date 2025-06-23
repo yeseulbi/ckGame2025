@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b4bee6e413a1d4e9b4a77cecbceebe, type: 3}
+  m_Name: wp_sword_h_03
+  m_EditorClassIdentifier: 
+  itemID: wp_sword_h_03
+  itemName: "\uD384\uC11C \uC138\uC774\uBC84"
+  itemType: 0
+  description: "\uAC15\uB825\uD55C \uC5D0\uB108\uC9C0 \uD30C\uB3D9\uC744 \uBC29\uCD9C\uD558\uB294
+    \uAD11\uC120\uAC80."
+  itemIcon: {fileID: -907580510, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
+  rarity: 2
+  weaponType: 0
+  baseDamage: 32
+  baseAttackDelay: 1
+  attackPowerIncrease: {x: 30, y: 35}
+  skillDamageIncrease: {x: 35, y: 45}
+  uniqueStatIncrease: {x: 15, y: 20}
+  statusEffectChance: {x: 0, y: 0}
+  effects: []
+  cooldown: 0
+  skillToUnlock: 0

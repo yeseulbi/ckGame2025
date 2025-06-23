@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b4bee6e413a1d4e9b4a77cecbceebe, type: 3}
+  m_Name: wp_hack_r_01
+  m_EditorClassIdentifier: 
+  itemID: wp_hack_r_01
+  itemName: "ICE \uBE0C\uB808\uC774\uCEE4"
+  itemType: 0
+  description: "\uAE30\uC5C5\uC758 \uD45C\uC900 \uBC29\uD654\uBCBD\uC744 \uBB34\uB825\uD654\uD558\uAE30
+    \uC704\uD55C \uAD70\uC6A9 \uD574\uD0B9 \uD234."
+  itemIcon: {fileID: 2088684073, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+  rarity: 1
+  weaponType: 2
+  baseDamage: 17
+  baseAttackDelay: 0.8
+  attackPowerIncrease: {x: 10, y: 15}
+  skillDamageIncrease: {x: 20, y: 30}
+  uniqueStatIncrease: {x: 20, y: 30}
+  statusEffectChance: {x: 0, y: 0}
+  effects: []
+  cooldown: 0
+  skillToUnlock: 0

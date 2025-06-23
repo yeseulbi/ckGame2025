@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b4bee6e413a1d4e9b4a77cecbceebe, type: 3}
+  m_Name: act_r_emp
+  m_EditorClassIdentifier: 
+  itemID: act_r_emp
+  itemName: "EMP \uC218\uB958\uD0C4"
+  itemType: 2
+  description: "\uC8FC\uBCC0\uC758 \uC801\uB4E4\uC744 \uC7A0\uC2DC \uB9C8\uBE44\uC2DC\uD0A8\uB2E4."
+  itemIcon: {fileID: 1086260704, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
+  rarity: 1
+  weaponType: 0
+  baseDamage: 0
+  baseAttackDelay: 0
+  attackPowerIncrease: {x: 0, y: 0}
+  skillDamageIncrease: {x: 0, y: 0}
+  uniqueStatIncrease: {x: 0, y: 0}
+  statusEffectChance: {x: 0, y: 0}
+  effects:
+  - effectType: 3
+    target: 2
+    statToModify: 0
+    statusToApply: 1
+    value: 0
+    duration: 3
+    isPercentage: 0
+  cooldown: 45
+  skillToUnlock: 0

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b4bee6e413a1d4e9b4a77cecbceebe, type: 3}
+  m_Name: con_h_forcefield
+  m_EditorClassIdentifier: 
+  itemID: con_h_forcefield
+  itemName: "\uD734\uB300\uC6A9 \uC5ED\uC7A5 \uC0DD\uC131\uAE30"
+  itemType: 3
+  description: "\uB2E4\uC74C \uBC29\uC5D0\uC11C \uBC1B\uB294 \uD53C\uD574\uAC00 \uAC10\uC18C\uD55C\uB2E4."
+  itemIcon: {fileID: -1759017344, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+  rarity: 2
+  weaponType: 0
+  baseDamage: 0
+  baseAttackDelay: 0
+  attackPowerIncrease: {x: 0, y: 0}
+  skillDamageIncrease: {x: 0, y: 0}
+  uniqueStatIncrease: {x: 0, y: 0}
+  statusEffectChance: {x: 0, y: 0}
+  effects:
+  - effectType: 0
+    target: 0
+    statToModify: 2
+    statusToApply: 0
+    value: 30
+    duration: 0
+    isPercentage: 1
+  cooldown: 0
+  skillToUnlock: 0

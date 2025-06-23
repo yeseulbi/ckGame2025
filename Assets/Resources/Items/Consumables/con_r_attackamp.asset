@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b4bee6e413a1d4e9b4a77cecbceebe, type: 3}
+  m_Name: con_r_attackamp
+  m_EditorClassIdentifier: 
+  itemID: con_r_attackamp
+  itemName: "\uC784\uC2DC \uACF5\uACA9\uB825 \uC99D\uD3ED\uAE30"
+  itemType: 3
+  description: "\uB2E4\uC74C \uBC29\uC5D0\uC11C \uACF5\uACA9\uB825\uC774 \uC99D\uAC00\uD55C\uB2E4."
+  itemIcon: {fileID: 1207373440, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+  rarity: 1
+  weaponType: 0
+  baseDamage: 0
+  baseAttackDelay: 0
+  attackPowerIncrease: {x: 0, y: 0}
+  skillDamageIncrease: {x: 0, y: 0}
+  uniqueStatIncrease: {x: 0, y: 0}
+  statusEffectChance: {x: 0, y: 0}
+  effects:
+  - effectType: 0
+    target: 0
+    statToModify: 9
+    statusToApply: 0
+    value: 20
+    duration: 0
+    isPercentage: 1
+  cooldown: 0
+  skillToUnlock: 0

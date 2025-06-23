@@ -9,10 +9,8 @@ public class EnemyStatus : EnemyMove
     // 체력바
     public GameObject Hpbar;    // 구조 변동 시 inspector연결 가능
     GameObject currentHpBar;
+    SpriteRenderer sr;
 
-    private Vector3 initialLocalScale;
-
-    bool canAttack = true;
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player")&&!PlayerStatus.DontGetDamage)
@@ -28,9 +26,8 @@ public class EnemyStatus : EnemyMove
             Hitbox = transform.GetChild(2).gameObject;
         if (Hpbar == null)
             Hpbar = transform.GetChild(0).gameObject;
-
+        sr = transform.GetChild(1).GetComponent<SpriteRenderer>();
         currentHpBar = Hpbar.transform.GetChild(0).gameObject;
-        initialLocalScale = Hpbar.transform.localScale;
         
         currentHp = _Data.maxHP;
         audioSource.clip = _Data.AttackSound;
@@ -46,43 +43,20 @@ public class EnemyStatus : EnemyMove
             Hitbox.SetActive(false);
         }
 
-        Hpbar.transform.localScale = transform.localScale.x != 1 ? new Vector3(initialLocalScale.x * - 1, initialLocalScale.y, 1)
-            : new Vector3(initialLocalScale.x, initialLocalScale.y, 1);
+        if (Hpbar.transform.localScale.x != transform.localScale.x)
+             Hpbar.transform.localScale = new Vector3(transform.localScale.x, Hpbar.transform.localScale.y, Hpbar.transform.localScale.z);
 
-        if (canAttack&&isInPlayer && anim.GetInteger("Attack")==0&&!hp0_Dead)
+        if (canAttack && isInPlayer && anim.GetInteger("Attack") == 0 && !hp0_Dead)
         {
             canAttack = false;
-            StartCoroutine(Attacked());
+            StartCoroutine(Attacked(_Data.enemyType));
         }
-    }
-    
-    IEnumerator Attacked()
-    {
-        anim.SetInteger("Attack", 1);
-
-        canMove = false;
-        yield return new WaitUntil(() =>
-        anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f &&
-        anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_0"));
-
-        Hitbox.SetActive(true);
-        StartCoroutine(Hitbox.transform.GetComponent<EnemyHitBox>().CheckTriggerTimeout());
-
-        yield return new WaitUntil(() =>
-        anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f &&
-        anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_1"));
-
-        anim.SetInteger("Attack", 0);
-
-        canMove = true;
-
-        yield return new WaitForSeconds(_Data.attackCooltime);
-        canAttack = true;
     }
 
     public void TakeDamage()
     {
-        anim.SetTrigger("isHit");
+
+        StartCoroutine(HitColor());
         currentHp -= PlayerStatus.Instance.str;
         currentHp = Mathf.Max(0, currentHp); // 0 미만 방지
 
@@ -96,12 +70,51 @@ public class EnemyStatus : EnemyMove
     }
     public void Effect()
     {
-        var Obj = Instantiate(_Data.AttackFX, player.transform.position, Quaternion.identity); // 타격 이펙트 배열 확장 변경
+        var Obj = Instantiate(_Data.AttackFX, player.transform.position, Quaternion.identity); // 타격 이펙트
         audioSource.Play();
 
         var particle = Obj.GetComponent<ParticleSystem>();
         float RemoveTime = particle.main.duration + particle.main.startLifetime.constantMax;    // 파티클 시스템의 지속 시간과 + 시작 LifeTime 제거 시간 계산
         StartCoroutine(player.GetComponent<PlayerStatus>().TakeDamage(_Data.str));
         Destroy(Obj, RemoveTime);
+    }
+
+    WaitForSeconds Seconds03 = new WaitForSeconds(0.3f);
+    IEnumerator HitColor()
+    {
+        sr.color = Color.red;
+        yield return Seconds03;
+        sr.color = Color.white;
+    }
+    IEnumerator Attacked(EnemyType type)
+    {
+        anim.SetInteger("Attack", 1);
+
+        canMove = false;
+        yield return new WaitUntil(() =>
+        anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f &&
+        anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_0"));
+
+        switch (type)
+        {
+            case EnemyType.Melee:
+                Hitbox.SetActive(true);
+                StartCoroutine(Hitbox.transform.GetComponent<EnemyHitBox>().CheckTriggerTimeout());
+                break;
+            case EnemyType.Ranged:
+                //투사체 발사
+                break;
+        }
+
+        yield return new WaitUntil(() =>
+        anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f &&
+        anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_1"));
+
+        anim.SetInteger("Attack", 0);
+
+        canMove = true;
+
+        yield return new WaitForSeconds(_Data.attackCooltime);
+        canAttack = true;
     }
 }

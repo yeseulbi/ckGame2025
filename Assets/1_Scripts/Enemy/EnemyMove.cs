@@ -8,7 +8,7 @@ public class EnemyMove : MonoBehaviour
     public GameObject Hitbox;
     protected Animator anim;
     protected AudioSource audioSource;
-    SpriteRenderer sr;
+    SpriteRenderer HitboxSr;
 
     [Header("주변 순찰")]
     public bool patrol = true; // 주변 순찰 여부
@@ -29,6 +29,8 @@ public class EnemyMove : MonoBehaviour
 
     // 움직임 일시적 정지(벽 감지,행동 불가 등)에 사용
     protected bool canMove = true;
+    // 공격 정지
+    protected bool canAttack = true;
 
     // 플레이어 감지
     protected bool isInPlayer = false;
@@ -42,7 +44,7 @@ public class EnemyMove : MonoBehaviour
         Hitbox = transform.GetChild(2).gameObject;
         anim = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
-        sr = Hitbox.GetComponent<SpriteRenderer>();
+        HitboxSr = Hitbox.GetComponent<SpriteRenderer>();
 
         DetectionRange = _Data.detectionRange;
         Respawn = transform.position;
@@ -57,7 +59,7 @@ public class EnemyMove : MonoBehaviour
     }
     public virtual void Update()
     {
-        sr.enabled = SeeHitbox;
+        HitboxSr.enabled = SeeHitbox;
         isInPlayer = false;
 
         if (hp0_Dead)
@@ -102,7 +104,6 @@ public class EnemyMove : MonoBehaviour
             );
             Debug.DrawRay(transform.position, posX, Color.magenta, Hitbox.transform.localScale.x-0.3f);
 
-            
             if(attack&&wallCheck.collider==null)
                 isInPlayer = true;
         }
@@ -132,7 +133,6 @@ public class EnemyMove : MonoBehaviour
         Debug.DrawRay(cornerRayOrigin, cornerRayDir * cornerRayLength, Color.yellow);
 
         float speedbalance = 0.8f;
-
 
         // 앞에 벽/낭떠러지 있음
         if ((isWall ||!isCorner))
@@ -215,7 +215,6 @@ public class EnemyMove : MonoBehaviour
         scale.x = Mathf.Abs(scale.x) * moveDir;
         transform.localScale = scale;
     }
-
     IEnumerator DeadMotion()
     {
         anim.SetBool("isDead", true);

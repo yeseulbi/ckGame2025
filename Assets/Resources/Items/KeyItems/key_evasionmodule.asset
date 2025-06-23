@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b4bee6e413a1d4e9b4a77cecbceebe, type: 3}
+  m_Name: key_evasionmodule
+  m_EditorClassIdentifier: 
+  itemID: key_evasionmodule
+  itemName: "\uD68C\uD53C \uAE30\uB3D9 \uBAA8\uB4C8"
+  itemType: 4
+  description: "\uB300\uC2DC \uC911 \uC7A0\uC2DC \uBB34\uC801\uC774 \uB418\uB294
+    \uAE30\uB2A5\uC744 \uD65C\uC131\uD654\uD55C\uB2E4."
+  itemIcon: {fileID: 561978086, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+  rarity: 4
+  weaponType: 0
+  baseDamage: 0
+  baseAttackDelay: 0
+  attackPowerIncrease: {x: 0, y: 0}
+  skillDamageIncrease: {x: 0, y: 0}
+  uniqueStatIncrease: {x: 0, y: 0}
+  statusEffectChance: {x: 0, y: 0}
+  effects: []
+  cooldown: 0
+  skillToUnlock: 1
