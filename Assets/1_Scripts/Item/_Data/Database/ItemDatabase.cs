@@ -9,6 +9,7 @@ public class ItemDatabase : MonoBehaviour
     public static ItemDatabase Instance { get; private set; }
 
     private Dictionary<string, ItemData> itemDictionary = new Dictionary<string, ItemData>();
+    private Dictionary<string, WeaponItemData> weaponDictionary = new Dictionary<string, WeaponItemData>();
 
     void Awake()
     {
@@ -17,7 +18,7 @@ public class ItemDatabase : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject); // 씬이 바뀌어도 파괴되지 않음
 
-            // Resources/Items 폴더 안의 모든 ItemData를 불러와 딕셔너리에 저장
+            // Resources/Items 폴더 안의 무기를 제외한 ItemData를 불러와 딕셔너리에 저장
             ItemData[] allItems = Resources.LoadAll<ItemData>("Items");
             foreach (var item in allItems)
             {
@@ -26,6 +27,8 @@ public class ItemDatabase : MonoBehaviour
                     Debug.LogError($"{item.name} 애셋에 itemID가 지정되지 않았습니다. 확인해주세요.");
                     continue;
                 }
+                if (item.itemType == ItemType.Weapon)
+                    continue;
 
                 if (!itemDictionary.ContainsKey(item.itemID))
                 {
@@ -33,6 +36,22 @@ public class ItemDatabase : MonoBehaviour
                 }
             }
             Debug.Log($"{itemDictionary.Count}개의 아이템을 데이터베이스에 로드했습니다.");
+
+            WeaponItemData[] allWeapons = Resources.LoadAll<WeaponItemData>("Weapons");
+            foreach (var Weapon in allWeapons)
+            {
+                if (Weapon.itemID == null || Weapon.itemID == "")
+                {
+                    Debug.LogError($"{Weapon.name} 애셋에 itemID가 지정되지 않았습니다. 확인해주세요.");
+                    continue;
+                }
+
+                if (!weaponDictionary.ContainsKey(Weapon.itemID))
+                {
+                    weaponDictionary.Add(Weapon.itemID, Weapon);
+                }
+            }
+            Debug.Log($"{weaponDictionary.Count}개의 아이템을 데이터베이스에 로드했습니다.");
         }
         else
         {
@@ -51,15 +70,14 @@ public class ItemDatabase : MonoBehaviour
         return null;
     }
 
-    // ▼▼▼▼▼▼▼▼▼▼ 이 함수가 새로 추가되었습니다! ▼▼▼▼▼▼▼▼▼▼
-    /// <summary>
-    /// 데이터베이스에 있는 모든 아이템의 리스트를 반환합니다.
-    /// LINQ 필터링 등 전체 목록이 필요할 때 사용합니다.
-    /// </summary>
-    /// <returns>모든 ItemData의 리스트</returns>
     public List<ItemData> GetAllItems()
     {
         // 딕셔너리의 모든 값(ItemData)들을 새로운 리스트로 만들어 반환합니다.
         return itemDictionary.Values.ToList();
+    }
+
+    public List<WeaponItemData> GetAllWeapons()
+    {
+        return weaponDictionary.Values.ToList();
     }
 }

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a116b2a0333ff34fb8ad7e9a947b2b7, type: 3}
+  m_Name: wp_hack_h_01
+  m_EditorClassIdentifier: 
+  itemID: wp_hack_h_01
+  itemName: "\uACF5\uACA9\uC6A9 AI '\uCF54\uC5B4'"
+  itemType: 0
+  description: "\uC790\uC728\uC801\uC73C\uB85C \uC801 \uC2DC\uC2A4\uD15C\uC744 \uACF5\uACA9\uD558\uB294
+    \uC778\uACF5\uC9C0\uB2A5 \uBC14\uC774\uB7EC\uC2A4."
+  itemIcon: {fileID: 598053605, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+  rarity: 2
+  effects: []
+  cooldown: 0
+  skillToUnlock: 0
+  weaponType: 2
+  baseDamage: 28
+  baseAttackDelay: 0.8
+  attackPowerIncrease: {x: 15, y: 20}
+  uniqueStatIncrease: {x: 30, y: 40}
+  statusEffectChance: {x: 10, y: 15}
+  statusEffect: 4
+  statusEffectPercent: 10.610488

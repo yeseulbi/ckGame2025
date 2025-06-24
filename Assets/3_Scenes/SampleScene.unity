@@ -735,8 +735,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 265812763}
+  - component: {fileID: 265812765}
+  - component: {fileID: 265812764}
   m_Layer: 0
-  m_Name: EnemyPrefabs
+  m_Name: RoomOfStageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -760,6 +762,30 @@ Transform:
   - {fileID: 1597163991}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &265812764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265812762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6d7d9d70c64a54fa8ad1873a12254c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &265812765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265812762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67fc07ad0c05be24da0f7d7f9be493d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &357796059
 GameObject:
   m_ObjectHideFlags: 0
