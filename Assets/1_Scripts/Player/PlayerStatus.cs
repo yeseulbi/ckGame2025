@@ -12,7 +12,6 @@ public class PlayerStatus : PlayerMove
     [Header("UI")]
     public Text HP;
     public Slider HpBar;
-    
     public static PlayerStatus Instance { get; private set; }
 
     [Header("´É·ÂÄ¡")]

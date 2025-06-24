@@ -16,15 +16,8 @@ MonoBehaviour:
   itemName: "\uBC18\uC751\uD615 \uC7A5\uAC11 \uBAA8\uB4C8"
   itemType: 1
   description: "\uBC1B\uB294 \uD53C\uD574\uB97C \uAC10\uC18C\uC2DC\uD0A8\uB2E4."
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: -203870421, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
   rarity: 2
-  weaponType: 0
-  baseDamage: 0
-  baseAttackDelay: 0
-  attackPowerIncrease: {x: 0, y: 0}
-  skillDamageIncrease: {x: 0, y: 0}
-  uniqueStatIncrease: {x: 0, y: 0}
-  statusEffectChance: {x: 0, y: 0}
   effects:
   - effectType: 0
     target: 0
@@ -34,4 +27,3 @@ MonoBehaviour:
     duration: 0
     isPercentage: 1
   cooldown: 0
-  skillToUnlock: 0

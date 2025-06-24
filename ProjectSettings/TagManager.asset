@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - Enemy
   - Wall
+  - Icon
   layers:
   - Default
   - TransparentFX

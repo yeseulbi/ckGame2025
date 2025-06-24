@@ -1,8 +1,14 @@
 using UnityEngine;
 
+public class Weapon
+{
+
+}
+
 public class WeaponSet : MonoBehaviour
 {
     public static WeaponSet Instance { get; private set; }
+    SpriteRenderer sr;
 
     [Header("무기 효과음")]
     public AudioClip[] useWeapon_SF;
@@ -14,6 +20,7 @@ public class WeaponSet : MonoBehaviour
     {
         Instance = this;
         audioSource = GetComponent<AudioSource>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void WeaponSF_Play(int Index)
