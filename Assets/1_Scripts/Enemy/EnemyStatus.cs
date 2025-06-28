@@ -60,7 +60,7 @@ public class EnemyStatus : EnemyMove
     {
 
         StartCoroutine(HitColor());
-        currentHp -= PlayerStatus.Instance.str;
+        currentHp -= PlayerStatus.Instance.myDamage();
         currentHp = Mathf.Max(0, currentHp); // 0 미만 방지
 
         float hpRatio = (_Data.maxHP > 0) ? currentHp / _Data.maxHP : 0f;

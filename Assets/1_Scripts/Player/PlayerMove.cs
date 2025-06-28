@@ -99,7 +99,7 @@ public class PlayerMove : MonoBehaviour
             WeaponSet.Instance.WeaponSF_Play(0);
 
             canAttack = false;
-            StartCoroutine(AttackDelay(0));
+            StartCoroutine(AttackDelay());
         }
     }
     private void OnCollisionEnter2D(Collision2D other)
@@ -140,10 +140,10 @@ public class PlayerMove : MonoBehaviour
         onGround = false;
     }
 
-    IEnumerator AttackDelay(float AttackSpeed)  // 추가 어택 속도, 없으면 0
+    IEnumerator AttackDelay()
     {
         var Delay = PlayerStatus.Instance.attackDelay;
-        yield return new WaitForSeconds(0.6f/(Delay + AttackSpeed*Delay/100));
+        yield return new WaitForSeconds(PlayerStatus.Instance.myAttackDelay());
         canAttack = true;
     }
 }

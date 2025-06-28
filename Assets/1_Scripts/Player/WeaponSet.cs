@@ -30,4 +30,8 @@ public class WeaponSet : MonoBehaviour
     {
         audioSource.PlayOneShot(Attack_SF[Index]);
     }
+    public void WeaponSpriteChange(Sprite set)
+    {
+        sr.sprite = set;
+    }
 }

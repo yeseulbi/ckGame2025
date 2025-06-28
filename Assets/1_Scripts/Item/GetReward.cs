@@ -105,24 +105,8 @@ public class GetReward : MonoBehaviour
         for (int i = 0; i < rewardCount; i++)
         {//220
             itemIconList.Add(Instantiate(itemIconPrefab, transform));
-            itemIconList[i].GetComponentInChildren<Image>().sprite = rewardItems[i].itemIcon;
 
-            Color outline = Color.white;
-            var ri = itemIconList[i].GetComponent<RawImage>();
-            switch (rewardItems[i].rarity)
-            {
-                case ItemRarity.Rare:
-                    outline = new Color(0.74f,1,0.9f);
-                    break;
-                case ItemRarity.Heroic:
-                    outline = new Color(0.61f, 0.41f, 1);
-                    break;
-                case ItemRarity.Legendary:
-                    outline = new Color(1, 0.117f, 0.854f);
-                    break;
-            }
-            ri.color = outline;
-            itemIconList[i].GetComponent<item_Information>().GetData(rewardItems[i], outline);
+            itemIconList[i].GetComponent<item_Information>().GetData(rewardItems[i]);
 
             // Á¤·Ä
             if (i < 4)

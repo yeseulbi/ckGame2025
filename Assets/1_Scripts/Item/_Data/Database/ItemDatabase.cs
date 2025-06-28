@@ -8,6 +8,8 @@ public class ItemDatabase : MonoBehaviour
     // 어디서든 쉽게 접근할 수 있도록 싱글톤 패턴 사용
     public static ItemDatabase Instance { get; private set; }
 
+    public ItemData None;
+
     private Dictionary<string, ItemData> itemDictionary = new Dictionary<string, ItemData>();
     private Dictionary<string, WeaponItemData> weaponDictionary = new Dictionary<string, WeaponItemData>();
 
@@ -29,8 +31,11 @@ public class ItemDatabase : MonoBehaviour
                 }
                 if (item.itemType == ItemType.Weapon)
                     continue;
-
-                if (!itemDictionary.ContainsKey(item.itemID))
+                if(item.itemID == "None")
+                {
+                    None = item;
+                }
+                else if (!itemDictionary.ContainsKey(item.itemID))
                 {
                     itemDictionary.Add(item.itemID, item);
                 }

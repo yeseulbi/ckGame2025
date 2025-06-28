@@ -67,10 +67,6 @@ public class PlayerStatus : PlayerMove
         {
             Debug.Log("최대 레벨 도달");
         }
-
-       /* MainStatus.StatusEffectAdd.Add(StatusEffect.Invincible, 10f);
-
-        Debug.Log(MainStatus.StatusEffectAdd.ContainsKey((StatusEffect)1));*/
     }
     public override void Update()
     {
@@ -95,26 +91,18 @@ public class PlayerStatus : PlayerMove
             spRenderer.color = Color.white;
         }
     }
-
-    public void myDamage()
+    public void WeaponDamageSet(WeaponItemData weapon)
     {
-        
+
     }
-
-    /*public float CalculateFinalDamage()
+    public float myDamage()
     {
-        // 1. 장착한 무기의 정보를 가져옵니다.
-        WeaponData equippedWeapon = inventory.GetEquippedWeapon();
-
-        // 2. 캐릭터의 스탯 보너스를 계산합니다. (str 1 = 1% 가정)
-        float statBonus = this.str * 0.01f;
-
-        // 3. 최종 데미지를 계산합니다.
-        float finalDamage = equippedWeapon.baseDamage * (1f + statBonus);
-
-        // (심화) 여기에 무기 자체의 %옵션, 크리티컬, 버프 등을 추가로 계산할 수 있습니다.
-        // finalDamage *= (1f + equippedWeapon.attackPowerIncrease.x * 0.01f);
-
-        return finalDamage;
-    }*/
+        float damage = str + MyItemSet.Instance.myWeapon.baseDamage;
+        return damage;
+    }
+    public float myAttackDelay()
+    {
+        float attackdelay = MyItemSet.Instance.myWeapon.baseAttackDelay;
+        return attackdelay;
+    }
 }
