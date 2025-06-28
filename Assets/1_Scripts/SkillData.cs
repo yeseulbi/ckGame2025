@@ -1,7 +1,5 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewSkillData", menuName = "Game/Skill Data")]
-[System.Serializable]
 public class StatusEffectData
 {
     public StatusEffect effect;  // ex) Burn, Frozen 등
@@ -22,6 +20,8 @@ public class DebuffData
     public float value;
     public float duration;
 }
+[CreateAssetMenu(fileName = "NewSkillData", menuName = "Game/Skill Data")]
+[System.Serializable]
 public class SkillData : ScriptableObject
 {
     [Header("스킬명 / 종류")]

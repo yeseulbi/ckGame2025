@@ -1,9 +1,6 @@
 using UnityEngine;
 
-public class Weapon
-{
 
-}
 
 public class WeaponSet : MonoBehaviour
 {

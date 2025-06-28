@@ -8,6 +8,8 @@ public class EnemyStatus : EnemyMove
 
     // 체력바
     public GameObject Hpbar;    // 구조 변동 시 inspector연결 가능
+
+    public Rigidbody2D rb2D;
     GameObject currentHpBar;
     SpriteRenderer sr;
 
@@ -26,9 +28,10 @@ public class EnemyStatus : EnemyMove
             Hitbox = transform.GetChild(2).gameObject;
         if (Hpbar == null)
             Hpbar = transform.GetChild(0).gameObject;
+        rb2D = GetComponent<Rigidbody2D>();
         sr = transform.GetChild(1).GetComponent<SpriteRenderer>();
         currentHpBar = Hpbar.transform.GetChild(0).gameObject;
-        
+
         currentHp = _Data.maxHP;
         audioSource.clip = _Data.AttackSound;
     }

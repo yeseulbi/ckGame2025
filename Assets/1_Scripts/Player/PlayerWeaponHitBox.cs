@@ -34,7 +34,7 @@ public class PlayerWeaponHitBox : MonoBehaviour
 
 
             enemy.TakeDamage();
-            enemy.GetComponent<Rigidbody2D>().AddForce((enemy.transform.position - player.transform.position).normalized *2f , ForceMode2D.Impulse);
+            enemy.rb2D.AddForce((enemy.transform.position - player.transform.position).normalized *2f , ForceMode2D.Impulse);
             /*적에게 힘을 주는 부분, 밀어내는 힘이 있다면 무기별로 다를 것 같다. 2f부분 수정*/
             var particle = Obj.GetComponent<ParticleSystem>();
             float RemoveTime = particle.main.duration + particle.main.startLifetime.constantMax;    // 파티클 시스템의 지속 시간과 + 시작 LifeTime 제거 시간 계산

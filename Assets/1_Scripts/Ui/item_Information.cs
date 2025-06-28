@@ -3,28 +3,22 @@ using UnityEngine.UI;
 
 public class item_Information : MonoBehaviour
 {
-    Text[] informationText = new Text[4];
+    Text Info_rarity, Info_name, Info_description, Info_stat, Info_myItemstat;
     Image informationImage;
-    GameObject Information;
+    Transform ItemInfo_Panel;
     ItemData myItem_Data;
+    MyItems equip;
+
     Color rarityColor;
     private void Awake()
     {
-        Information = transform.parent.GetChild(2).gameObject;
-        for (int i=0; i<informationText.Length;i++)
-        {
-            informationText[i] = Information.transform.GetChild(i).GetComponent<Text>();
-        }
-        informationImage = Information.GetComponentInChildren<Image>(); 
-    }
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
+        ItemInfo_Panel = transform.parent.Find("ItemInfo_Panel");
+        Info_rarity= ItemInfo_Panel.Find("Rarity").GetComponent<Text>();
+        Info_name= ItemInfo_Panel.transform.Find("Name").GetComponent<Text>();
+        Info_description= ItemInfo_Panel.transform.Find("Description").GetComponent<Text>();
+        Info_stat= ItemInfo_Panel.transform.Find("Stat").GetComponent<Text>(); 
+        Info_myItemstat= ItemInfo_Panel.transform.Find("myItemStat").GetComponent<Text>();
+        informationImage = ItemInfo_Panel.GetComponentInChildren<Image>(); 
     }
     public void GetData(ItemData iconItem, Color color)
     {
@@ -33,21 +27,21 @@ public class item_Information : MonoBehaviour
     }
     public void TriggerEnter()
     {
-        Information.SetActive(true);
+        ItemInfo_Panel.gameObject.SetActive(true);
 
         if (myItem_Data.rarity > ItemRarity.Heroic)
-            informationText[0].text = "전설";
+            Info_rarity.text = "전설";
         else if (myItem_Data.rarity > ItemRarity.Rare)
-            informationText[0].text = "영웅";
+            Info_rarity.text = "영웅";
         else if (myItem_Data.rarity > ItemRarity.Common)
-            informationText[0].text = "희귀";
+            Info_rarity.text = "희귀";
         else
-            informationText[0].text = "일반";
+            Info_rarity.text = "일반";
 
-        informationText[0].color = rarityColor;
+        Info_rarity.color = rarityColor;
 
-        informationText[1].text = myItem_Data.itemName;
-        informationText[2].text = myItem_Data.description;
+        Info_name.text = myItem_Data.itemName;
+        Info_description.text = myItem_Data.description;
 
         if (myItem_Data.itemType == ItemType.Weapon)
         {
@@ -65,14 +59,36 @@ public class item_Information : MonoBehaviour
                     Type = "해킹 장치";
                     break;
             }
-            informationText[3].text = myWeapon.statusEffect == StatusEffect.None|| myWeapon.statusEffect == StatusEffect.Invincible ? $"{Type}\n공격력 {myWeapon.baseDamage}\n공격 속도 {myWeapon.baseAttackDelay}"
+            Info_stat.text = myWeapon.statusEffect == StatusEffect.None|| myWeapon.statusEffect == StatusEffect.Invincible ? $"{Type}\n공격력 {myWeapon.baseDamage}\n공격 속도 {myWeapon.baseAttackDelay}"
                 : $"{Type}\n공격력 {myWeapon.baseDamage}\n공격 속도 {myWeapon.baseAttackDelay}\n부여 효과 {myWeapon.statusEffect.ToString()}, {(string)myWeapon.statusEffectPercent.ToString("F2")}%";
         }
-        else informationText[3].text = "";
+        else Info_stat.text = "";
             informationImage.sprite = myItem_Data.itemIcon;
     }
     public void TriggerExit()
     {
-        Information.SetActive(false);
+        ItemInfo_Panel.gameObject.SetActive(false);
+    }
+
+    public void EquipItemButton()
+    {
+        switch(myItem_Data.itemType)
+        {
+            case ItemType.Weapon:
+                equip.EquipWeapon((WeaponItemData)myItem_Data);
+                myItem_Data = equip.myWeapon ?? null;
+                break;
+
+            case ItemType.Active:
+                equip.EquipActive(myItem_Data);
+                myItem_Data = equip.myActive ?? null;
+                break;
+
+            case ItemType.Passive:
+                equip.EquipPassive(myItem_Data);
+                myItem_Data = equip.myPassive ?? null;
+                break;
+        }
+        equip.Equipped();
     }
 }

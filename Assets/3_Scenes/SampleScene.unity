@@ -5959,7 +5959,7 @@ GameObject:
   - component: {fileID: 1877407196}
   - component: {fileID: 1877407195}
   m_Layer: 5
-  m_Name: item_Information
+  m_Name: ItemInfo_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -43,7 +43,6 @@ public class RandomItem
         float legendaryChance = Mathf.Lerp(LEGENDARY_START, LEGENDARY_END, progressRatio);
 
         // 4. 희귀 등급 확률은 전체 합이 1.0이 되도록 나머지를 채웁니다.
-        //    (결과적으로 1-1에서는 15%, 3-5에서는 20%가 되도록 자동 계산됩니다)
         float rareChance = 1.0f - commonChance - heroicChance - legendaryChance;
 
         #endregion
@@ -141,7 +140,7 @@ public class RandomItem
     #endregion
 public static ItemData RandomItemReward(Func<ItemData, bool> condition)
     {
-        #region 특정 1종류 아이템 반환
+        #region 람다식을 이용해 원하는 조건의 아이템 반환
 
         // ItemDatabase에서 Item 아이템 목록을 받아 SelectItemList에 할당하기
         List<ItemData> SelectItemList = ItemDatabase.Instance.GetAllItems()
@@ -154,17 +153,4 @@ public static ItemData RandomItemReward(Func<ItemData, bool> condition)
         return SelectItemList[select];
     }
     #endregion
-}
-[System.Serializable]
-public class InventoryItem
-{
-    public ItemData data;
-    public int quantity;
-
-    // 인벤토리에 아이템 보관
-    public InventoryItem(ItemData sourceData, int amount = 1)
-    {
-        data = sourceData;
-        quantity = amount;
-    }
 }

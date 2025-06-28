@@ -27,7 +27,7 @@ public class PlayerStatus : PlayerMove
     [Tooltip("다음 레벨까지 경험치")] public float nextLevelExp = 100f;
 
     public static bool DontGetDamage;   //무적
-    float invincibleTime = 0.8f;        //무적시간(공격 받았을 때)
+    WaitForSeconds invincibleTime = new WaitForSeconds(0.8f);        //무적시간(공격 받았을 때)
     public CharacterType characterType;
     public SkillData ultimateSkill;
 
@@ -90,10 +90,15 @@ public class PlayerStatus : PlayerMove
 
             spRenderer.color = Color.red;
 
-            yield return new WaitForSeconds(invincibleTime);
+            yield return invincibleTime;
                 DontGetDamage = false;
             spRenderer.color = Color.white;
         }
+    }
+
+    public void myDamage()
+    {
+        
     }
 
     /*public float CalculateFinalDamage()
